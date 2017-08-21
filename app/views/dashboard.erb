@@ -9,13 +9,13 @@
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="/stations">Station Index</a>
-  <a href="/stations-dashboard">Station Analytics</a>
+  <a href="/stations-dashboard" class='dropdown dropbtn'>Station Analytics</a>
   <a href="/trips">Trip Index</a>
   <a href="/trips-dashboard">Trip Analytics</a>
 </div>
 
 
-<span class='menu-color' onclick="openNav()">&#9776; Menu</span>
+<span class='menu-color' onmouseover="openNav()">&#9776; Menu</span>
 
 <script>
   function openNav() {
@@ -29,6 +29,7 @@
     document.getElementById("top-head").style.marginLeft = "0";
   }
 </script>
+<!-- <script type="text/javascript" src='./app/views/script.js'/></script> -->
 
 <div id='main'>
   <img src="/silhouette.jpg"/>
