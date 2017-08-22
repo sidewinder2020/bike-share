@@ -2,6 +2,9 @@ require 'will_paginate'
 require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
+  set :root, File.expand_path("..", __dir__)
+  set :method_override, true
+
   get '/' do
     erb :dashboard
   end
@@ -78,7 +81,7 @@ class BikeShareApp < Sinatra::Base
 
   put '/trips/:id' do |id|
     Trip.update(id, params[:trip])
-    redirect '/trips/#{id}'
+    redirect "/trips/#{id}"
   end
 
   delete '/trips/:id' do |id|

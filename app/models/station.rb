@@ -1,8 +1,12 @@
+require './app/models/trip'
+
 class Station < ActiveRecord::Base
   validates :name, presence: true
   validates :city, presence: true
   validates :installation_date, presence: true
   validates :dock_count, presence: true
+  has_many :start_trips, class_name: "Trip", foreign_key: "start_station_id"
+  has_many :end_trips, class_name: "Trip", foreign_key: "end_station_id"
 
   def self.most_recent_installation_date
     self.maximum(:installation_date)
@@ -47,4 +51,47 @@ class Station < ActiveRecord::Base
     name = "Washington at Kearney" if name == "Washington at Kearny"
     find_by(name: name).id
   end
+
+  def self.most_popular_starting_station
+    Trip.group(:start_station).order("count_id DESC").count(:id).keys.first.name
+  end
+
+  def self.most_popular_ending_station
+    Trip.group(:end_station).order("count_id DESC").count(:id).keys.first.name
+  end
+
+  def number_of_rides_started_here
+    start_trips.count
+  end
+
+  def number_of_rides_ended_here
+    self.end_trips.count
+  end
+
+  def most_frequent_destination_station
+    a = Trip.where(end_station_id: self.id)
+    a.group(:start_station).order("count_id DESC").count(:id).keys.first.name
+  end
+
+  def most_frequent_origination_station
+    a = Trip.where(start_station_id: self.id)
+    a.group(:end_station).order("count_id DESC").count(:id).keys.first.name
+  end
+
+  def highest_volume_date_here
+    a = Trip.where(start_station_id: self.id)
+    a.group(:start_date).order("count_id DESC").count(:id).keys.first
+  end
+
+  def most_frequent_zip_code
+    a = Trip.where(start_station_id: self.id)
+    a.group(:zip_code).order("count_id DESC").count(:id).keys.first
+  end
+
+  def most_frequent_bike_id
+    a = Trip.where(start_station_id: self.id)
+    #maybe chain together
+    a.group(:bike_id).order("count_id DESC").count(:id).keys.first
+  end
+
 end

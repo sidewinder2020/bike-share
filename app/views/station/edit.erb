@@ -3,8 +3,8 @@
 <form action="/stations/<%= @station.id %>" method="post">
   <input type="hidden" name="_method" value="PUT" />
   <input type='text' name='station[name]' value="<%= @station.name %>"/><br/>
-  <textarea name='station[city]'><%= @station.city %></textarea><br/>
-  <textarea name='station[installation_date]'><%= @station.installation_date %></textarea><br/>
-  <textarea name='station[dock_count]'><%= @station.dock_count %></textarea><br/>
+  <input type='text' name='station[city]' value="<%= @station.city %>"/><br/>
+  <input type='text' name='station[installation_date]' value="<%= @station.installation_date %>"/><br/>
+  <input type='text' name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
   <input type='submit' value = "edit the station"/>
 </form>

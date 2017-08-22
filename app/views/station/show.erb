@@ -1,8 +1,16 @@
-<h1>Station</h1>
+<h1><%= @station.name %></h1>
 <a href="/stations">Station Index</a>
 
-<h2><%= @station.name %></h2>
+<h3>General Information: </h3>
+<p><strong>city:</strong> <%= @station.city %></p>
+<p><strong>installation date:</strong> <%= @station.installation_date %></p>
+<p><strong>dock count:</strong> <%= @station.dock_count %></p>
 
-<p>city:<%= @station.city %></p>
-<p>installation date:<%= @station.installation_date %></p>
-<p>dock count:<%= @station.dock_count %></p>
+<h3>Station <%= @station.name %>'s Analytics</h3>
+<p><strong>Number of rides started at this station:</strong> <%= @station.number_of_rides_started_here %></p>
+<p><strong>Number of rides ended at this station:</strong> <%= @station.number_of_rides_ended_here %></p>
+<p><strong>Most frequent destination station (for rides that began at this station):</strong> <%= @station.most_frequent_destination_station %></p>
+<p><strong>Most frequent origination station (for rides that began at this station):</strong> <%= @station.most_frequent_origination_station %></p>
+<p><strong>Date with the highest number of trips started at this station:</strong> <%= @station.highest_volume_date_here %></p>
+<p><strong>Most frequent zip code for users starting trips at this station:</strong> <%= @station.most_frequent_zip_code %></p>
+<p><strong>Bike ID most frequently starting a trip at this station:</strong> <%= @station.most_frequent_bike_id %></p>

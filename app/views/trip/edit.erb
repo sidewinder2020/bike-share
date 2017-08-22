@@ -1,17 +1,17 @@
 <h1>Edit your Trip</h1>
 
 <form action="/trips/<%= @trip.id %>" method="post">
-  <input type="hidden" name="_method" value="PUT"/>
-  <input type='text' name='trip[start_station_id]' value="<%= @trip.start_station_id %>"/><br/>
-  <input type='text' name='trip[end_station_id]' value="<%= @trip.end_station_id %>"/><br/>
-  <input type='text' name='trip[start_date]' value="<%= @trip.start_date %>"/><br/>
-  <input type='text' name='trip[end_date]' value="<%= @trip.end_date %>"/><br/>
-  <input type='text' name='trip[duration]' value="<%= @trip.duration %>"/><br/>
-  <input type='text' name='trip[bike_id]' value="<%= @trip.bike_id %>"/><br/>
+  <input type="hidden" name="_method" value="PUT" />
+  <input type='number' name='trip[start_station_id]' value="<%= @trip.start_station_id %>"/><br/>
+  <input type='number' name='trip[end_station_id]' value="<%= @trip.end_station_id %>"/><br/>
+  <input type='date' name='trip[start_date]' value="<%= @trip.start_date %>"/><br/>
+  <input type='date' name='trip[end_date]' value="<%= @trip.end_date %>"/><br/>
+  <input type='number' name='trip[duration]' value="<%= @trip.duration %>"/><br/>
+  <input type='number' name='trip[bike_id]' value="<%= @trip.bike_id %>"/><br/>
   <select name='trip[subscription_type]'>
     <option value="customer">Customer</option>
     <option value="subscriber">Subscriber</option>
   </select><br/>
   <input type='text' name='trip[zip_code]' value="<%= @trip.zip_code %>"/><br/>
-  <input type='submit'/>
+  <input type='submit' value='edit the trip'/>
 </form>
