@@ -37,40 +37,45 @@ def seed_by_date(date)
   date = "#{date_array[1]}/#{date_array[0]}/#{date_array[2]}"
 end
 
-# Station.destroy_all
-# system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
-# Trip.destroy_all
-# system 'Say "Trips seeded, thank you computer Jesus"'
-# # Condition.destroy_all
-# system 'Say "All bunnies must die Die Bunnies die bunnies die die die die all bunnies"'
+
+Station.destroy_all
+system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
+Trip.destroy_all
+system 'Say "Trips seeded, thank you computer Jesus"'
+Condition.destroy_all
+system 'Say "All bunnies must die Die Bunnies die bunnies die die die die all bunnies"'
 
 conditions = CSV.foreach "./db/csv/weather.csv", headers: true, header_converters: :symbol
-# stations = delete_columns("./db/csv/station.csv", [:lat, :long])
-# trips = CSV.foreach "./db/csv/trip.csv", headers: true, header_converters: :symbol
+stations = delete_columns("./db/csv/station.csv", [:lat, :long])
+trips = CSV.foreach "./db/csv/trip.csv", headers: true, header_converters: :symbol
+
+conditions = CSV.foreach "./db/csv/weather.csv", headers: true, header_converters: :symbol
+
 
 puts "finished with csvs"
 
-  # stations.each do |row|
-  #   row = row.to_h
-  #   row[:installation_date] = Date.strptime(row[:installation_date], '%m/%d/%Y')
-  #   Station.create!(row)
-  #   puts "finished station"
-  # end
+  stations.each do |row|
+    row = row.to_h
+    row[:installation_date] = Date.strptime(row[:installation_date], '%m/%d/%Y')
+    Station.create!(row)
+    puts "finished station"
+  end
 
 start_time = Time.now
 
   count = 0
-  # trips.each do |row|
-  #   row = row.to_h
-  #   row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))
-  #   row[:end_station_id] = Station.id_by_name(row.delete(:end_station_name))
-  #   row[:zip_code] = clean_zipcode(row[:zip_code])
-  #   row[:start_date] = Date.strptime(row[:start_date], "%m/%d/%Y")
-  #   row[:end_date] = Date.strptime(row[:end_date], "%m/%d/%Y")
-  #   Trip.create!(row)
-  #   count += 1
-  #   puts count
-  # end
+
+  trips.each do |row|
+    row = row.to_h
+    row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))
+    row[:end_station_id] = Station.id_by_name(row.delete(:end_station_name))
+    row[:zip_code] = clean_zipcode(row[:zip_code])
+    row[:start_date] = Date.strptime(row[:start_date], "%m/%d/%Y")
+    row[:end_date] = Date.strptime(row[:end_date], "%m/%d/%Y")
+    Trip.create!(row)
+    count += 1
+    puts count
+  end
 
   conditions.each do |row|
     row=row.to_h
@@ -88,5 +93,7 @@ start_time = Time.now
     puts "finished rows"
     Condition.create!(clean_row) if pick_a_stupid_zipcode(row[:zip_code])
   end
+
+  
 
 puts (Time.now - start_time)
