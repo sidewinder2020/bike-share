@@ -1,15 +1,76 @@
-<h1>Trip Index</h1>
-<a href="/trips/new">Add a New Trip</a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trip Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<% @trips.each do |trip| %>
-  <h3><a href="/trips/<%= trip.id %>"><%= trip.start_station.name %> - <%= trip.end_station.name %></a></h3>
-  <p>Start Date - End Date: <%= trip.start_date %> - <%= trip.end_date %></p>
-  <p>subscriber Type: <%= trip.subscription_type %></p>
-  <a href="/trips/<%= trip.id %>/edit" value='Edit'>Edit</a>
-  <form action="/trips/<%= trip.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete"/>
-  </form>
-<% end %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<h3><%= will_paginate @pages %></h3>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <style>
+      .view {
+          background: url("http://i.imgur.com/4J9PIxQ.jpg?1")no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+      .mine_off{
+        margin-left:200px
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid mine-off">
+        <a class="navbar-brand" href="/">Bike Share</a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/trips/new">Add New Trip</a></li>
+            <li><a href="/trips-dashboard">Trip Analytics</a></li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/stations">Station Index</a></li>
+                <li><a href="/stations-dashboard">Station Analytics</a></li>
+                <li><a href="/trips">Trip Index</a></li>
+                <li><a href="/trips-dashboard">Trip Analytics</a></li>
+								<li><a href="/conditions">Condition Index</a></li>
+                <li><a href="/conditions-dashboard">Condition Analytics</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+        <div class="view">
+        <div class="full-bg-img flex-center">
+        </div>
+
+    <div class="container">
+      <div class="page-header">
+        <h1><small></small></h1>
+      </div>
+      <h1 class="h1-responsive" style="color: black"> Trip Index </h1>
+
+      <% @trips.each do |trip| %>
+        <h3><a href="/trips/<%= trip.id %>"><%= trip.start_station.name %> - <%= trip.end_station.name %></a></h3>
+        <p>Start Date - End Date: <%= trip.start_date %> - <%= trip.end_date %></p>
+        <p>subscriber Type: <%= trip.subscription_type %></p>
+        <form action="/trips/<%= trip.id %>" method="POST">
+          <a class="btn btn-primary" href="/trips/<%= trip.id %>/edit" role="button">Edit</a>
+          <input type="hidden" name="_method" value="DELETE">
+          <input class="btn btn-default" type="submit" value="Delete"/>
+        </form>
+      <% end %>
+      <%= will_paginate @pages %>
+    </div>
+  </body>
+</html>

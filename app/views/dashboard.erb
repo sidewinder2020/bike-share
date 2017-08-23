@@ -1,35 +1,47 @@
-<link href='/main.css' rel='stylesheet' type="text/css"/>
-<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> -->
-<div id='top-head' class='top_bar'>
-  <p id='app-name' style='font-family: Kaushan Script;'>
-    Bike Share App
-  </p>
-</div>
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="/stations">Station Index</a>
-  <a href="/stations-dashboard">Station Analytics</a>
-  <a href="/trips">Trip Index</a>
-  <a href="/trips-dashboard">Trip Analytics</a>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BikeShareApp:Home</title>
+
+    <link href='/main.css' rel='stylesheet' type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+  </head>
+  <body>
+    <div id='top-head' class='top_bar'>
+      <p id='app-name' style='font-family: Kaushan Script;'>
+        Bike Share App
+      </p>
+    </div>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/stations">Station Index</a>
+      <a href="/stations-dashboard">Station Analytics</a>
+      <a href="/trips">Trip Index</a>
+      <a href="/trips-dashboard">Trip Analytics</a>
+      <a href="/conditions">Condition Index</a>
+      <a href="/conditions-dashboard">Condition Analytics</a>
+    </div>
 
 
-<span class='menu-color' onclick="openNav()">&#9776; Menu</span>
+    <span class='menu-color' onclick="openNav()">&#9776; Menu</span>
 
-<script>
-  function openNav() {
-    document.getElementById("mySidenav").style.width = "200px";
-    document.getElementById("top-head").style.marginLeft = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-  }
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-    document.getElementById("top-head").style.marginLeft = "0";
-  }
-</script>
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "200px";
+        document.getElementById("top-head").style.marginLeft = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.getElementById("top-head").style.marginLeft = "0";
+      }
+    </script>
 
-<div id='main'>
-  <img src="/silhouette.jpg"/>
-</div>
+    <div id='main'>
+      <img src="/silhouette.jpg"/>
+    </div>
+  </body>
+</html>

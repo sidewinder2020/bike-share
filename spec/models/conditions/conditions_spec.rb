@@ -1,4 +1,4 @@
-RSpec.describe Condition do
+RSpec.describe "Condition" do
 	describe "Validataions" do
 		it "Can exist with valid attributes" do
 			condition = Condition.create(weather_date: "1991/8/14", max_temperature: 50.1,

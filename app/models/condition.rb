@@ -1,3 +1,5 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
 require './app/models/trip'
 class Condition < ActiveRecord::Base
 	validates :weather_date,     presence: true
@@ -10,15 +12,18 @@ class Condition < ActiveRecord::Base
 	validates :precipitation,    presence: true
 	validates :zip_code,         presence: true
 
+
+	has_many :trips
 	has_many :trips, class_name: "Trip", foreign_key: "condition_id"
-	
+
 	def self.id_by_date(date)
 		find_by(weather_date: date).id
 	end
-	
+
 	# def self.join_table
 	# 	self.joins(:trips)
 	# end
+
 		
 	def self.breakout(temp_range)
 		range = trip_temps(temp_range)
@@ -34,7 +39,7 @@ class Condition < ActiveRecord::Base
 			.joins(:trips).where(max_temperature: (temp_range...(temp_range + 10)))
 			.group(:conditions).order("count_id DESC").count(:id)
 	end
-	
+
 	def self.breakout_temps
 		counter = 40.0
 		temp = Hash.new(0)

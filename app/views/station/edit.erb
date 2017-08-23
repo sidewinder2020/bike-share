@@ -1,10 +1,84 @@
-<h1> Edit your Station </h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit a Station</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<form action="/stations/<%= @station.id %>" method="post">
-  <input type="hidden" name="_method" value="PUT" />
-  <input type='text' name='station[name]' value="<%= @station.name %>"/><br/>
-  <input type='text' name='station[city]' value="<%= @station.city %>"/><br/>
-  <input type='text' name='station[installation_date]' value="<%= @station.installation_date %>"/><br/>
-  <input type='text' name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
-  <input type='submit' value = "edit the station"/>
-</form>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <style>
+
+
+
+        .view {
+          background: url("http://wallpapercave.com/wp/UYnUUzz.jpg")no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Bike Share</a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/stations">Station Index</a></li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/stations">Station Index</a></li>
+                <li><a href="/stations-dashboard">Station Analytics</a></li>
+                <li><a href="/trips">Trip Index</a></li>
+                <li><a href="/trips-dashboard">Trip Analytics</a></li>
+								<li><a href="/conditions">Condition Index</a></li>
+                <li><a href="/conditions-dashboard">Condition Analytics</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      <div class="view">
+      <!--Intro content-->
+      <div class="full-bg-img flex-center">
+      </div>
+
+    <div class="container">
+      <div class="page-header">
+        <h1><small></small></h1>
+      </div>
+        <h1 style="color: black"> Edit your Station </h1>
+          <form action="/stations/<%= @station.id %>" method="post">
+          <input type="hidden" name="_method" value="PUT" />
+            <div class="form-group">
+              <label style="color: black" for="InputStationName">Station Name</label>
+              <input type="text" class="form-control" name='station[name]' value="<%= @station.name %>" placeholder="Station Name">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputStationCity">Station City</label>
+              <input type="text" class="form-control" name='station[city]' value="<%= @station.city %>" placeholder="Station City">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputInstallationDate">Installation Date</label>
+              <input type="date" class="form-control" name='station[installation_date]' value="<%= @station.installation_date %>" placeholder="Installation Date">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputDockCount">Dock Count</label>
+              <input type="text" class="form-control" name='station[dock_count]' value="<%= @station.dock_count %>" placeholder="Dock Count">
+            </div>
+            <input class="btn btn-default" type='submit' value = "Submit"/>
+          </form>
+    </div>
+  </body>
+</html>
