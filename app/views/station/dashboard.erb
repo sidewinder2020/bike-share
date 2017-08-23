@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
     <style>
         .view {
           background: url("http://i.imgur.com/9PVIBtu.jpg")no-repeat center center fixed;
@@ -31,20 +36,25 @@
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
         <a class="navbar-brand" href="/">Bike Share</a>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/stations">Station Index</a></li>
-          <li class="dropdown">
-            <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/stations">Station Index</a></li>
-              <li><a href="/stations-dashboard">Station Analytics</a></li>
-              <li><a href="/trips">Trip Index</a></li>
-              <li><a href="/trips-dashboard">Trip Analytics</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/stations/new">Add New Station</a></li>
+            <li><a href="/stations">Station Index</a></li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/stations">Station Index</a></li>
+                <li><a href="/stations-dashboard">Station Analytics</a></li>
+                <li><a href="/trips">Trip Index</a></li>
+                <li><a href="/trips-dashboard">Trip Analytics</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
       <div class="view">
       <div class="full-bg-img flex-center">
