@@ -1,22 +1,82 @@
-<h1>Add a New Trip</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Station</title>
 
-<form action="/trips" method="post">
-  <p>Enter a start station and an end station:</p>
-  <input type='text' name='start_station_id'/><br/>
-  <input type='text' name='end_station_id'/><br/>
-  <p>Enter a start date and end date:</p>
-  <input type='text' name='start_date'/><br/>
-  <input type='text' name='end_date'/><br/>
-  <p>Enter a duration, for your trip:</p>
-  <input type='text' name='duration'/><br/>
-  <p>Enter a Bike ID:</p>
-  <input type='text' name='bike_id'/><br/>
-  <p>Choose a subscription type:</p>
-  <select name='subscription_type'>
-    <option value="customer">Customer</option>
-    <option value="subscriber">Subscriber</option>
-  </select><br/>
-  <p>Enter a zip code:</p>
-  <input type='text' name='zip_code'/><br/>
-  <input type='submit' value='create new trip'/>
-</form>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <style>
+        .view {
+          background: url("http://wallpapercave.com/wp/UYnUUzz.jpg")no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Bike Share</a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/trips">Trip Index</a></li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/trips">Trip Index</a></li>
+                <li><a href="/stations-dashboard">Station Analytics</a></li>
+                <li><a href="/trips">Trip Index</a></li>
+                <li><a href="/trips-dashboard">Trip Analytics</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      <div class="view">
+      <!--Intro content-->
+      <div class="full-bg-img flex-center">
+      </div>
+
+    <div class ="container">
+      <div class="page-header">
+        <h1><small></small></h1>
+      </div>
+        <h1>Add a New Trip</h1>
+
+        <form action="/trips" method="post">
+          <p>Enter a start station and an end station:</p>
+          <input type='text' name='start_station_id'/><br/>
+          <input type='text' name='end_station_id'/><br/>
+          <p>Enter a start date and end date:</p>
+          <input type='text' name='start_date'/><br/>
+          <input type='text' name='end_date'/><br/>
+          <p>Enter a duration, for your trip:</p>
+          <input type='text' name='duration'/><br/>
+          <p>Enter a Bike ID:</p>
+          <input type='text' name='bike_id'/><br/>
+          <p>Choose a subscription type:</p>
+          <select name='subscription_type'>
+            <option value="customer">Customer</option>
+            <option value="subscriber">Subscriber</option>
+          </select><br/>
+          <p>Enter a zip code:</p>
+          <input type='text' name='zip_code'/><br/>
+          <input class="btn btn-default" type='submit' value='create new trip'/>
+        </form>
+    </div>
+  </body>
+</html>
