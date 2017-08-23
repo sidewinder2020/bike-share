@@ -60,14 +60,26 @@
         <h1><small></small></h1>
       </div>
         <h1 style="color: black"> Edit your Station </h1>
-        <form action="/stations/<%= @station.id %>" method="post">
+          <form action="/stations/<%= @station.id %>" method="post">
           <input type="hidden" name="_method" value="PUT" />
-          <input type='text' name='station[name]' value="<%= @station.name %>"/><br/>
-          <input type='text' name='station[city]' value="<%= @station.city %>"/><br/>
-          <input type='text' name='station[installation_date]' value="<%= @station.installation_date %>"/><br/>
-          <input type='text' name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
-          <input class="btn btn-default" type='submit' value = "Submit"/>
-        </form>
+            <div class="form-group">
+              <label style="color: black" for="InputStationName">Station Name</label>
+              <input type="text" class="form-control" name='station[name]' value="<%= @station.name %>" placeholder="Station Name">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputStationCity">Station City</label>
+              <input type="text" class="form-control" name='station[city]' value="<%= @station.city %>" placeholder="Station City">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputInstallationDate">Installation Date</label>
+              <input type="text" class="form-control" name='station[installation_date]' value="<%= @station.installation_date %>" placeholder="Installation Date">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputDockCount">Dock Count</label>
+              <input type="text" class="form-control" name='station[dock_count]' value="<%= @station.dock_count %>" placeholder="Dock Count">
+            </div>
+            <input class="btn btn-default" type='submit' value = "Submit"/>
+          </form>
     </div>
   </body>
 </html>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Edit a Station</title>
+    <title>Edit a Trip</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -59,23 +59,25 @@
       <div class="page-header">
         <h1><small></small></h1>
       </div>
-        <h1>Edit your Trip</h1>
-
-        <form action="/trips/<%= @trip.id %>" method="post">
-          <input type="hidden" name="_method" value="PUT" />
-          <input type='number' name='trip[start_station_id]' value="<%= @trip.start_station_id %>"/><br/>
-          <input type='number' name='trip[end_station_id]' value="<%= @trip.end_station_id %>"/><br/>
-          <input type='date' name='trip[start_date]' value="<%= @trip.start_date %>"/><br/>
-          <input type='date' name='trip[end_date]' value="<%= @trip.end_date %>"/><br/>
-          <input type='number' name='trip[duration]' value="<%= @trip.duration %>"/><br/>
-          <input type='number' name='trip[bike_id]' value="<%= @trip.bike_id %>"/><br/>
-          <select name='trip[subscription_type]'>
-            <option value="customer">Customer</option>
-            <option value="subscriber">Subscriber</option>
-          </select><br/>
-          <input type='text' name='trip[zip_code]' value="<%= @trip.zip_code %>"/><br/>
-          <input type='submit' value='edit the trip'/>
-        </form>
+          <h1 style="color: black">Edit your Trip</h1>
+          <form action="/trips/<%= @trip.id %>" method="post">
+            <input type="hidden" name="_method" value="PUT" />
+            <p>Start Station ID: <input type='number' name='trip[start_station_id]' value="<%= @trip.start_station_id %>"/><br/></p>
+            <p>End Station ID: <input type='number' name='trip[end_station_id]' value="<%= @trip.end_station_id %>"/><br/></p>
+            <p>Start Date: <input type='date' name='trip[start_date]' value="<%= @trip.start_date %>"/><br/></p>
+            <p>End Date: <input type='date' name='trip[end_date]' value="<%= @trip.end_date %>"/><br/></p>
+            <p>Duration: <input type='number' name='trip[duration]' value="<%= @trip.duration %>"/><br/></p>
+            <p>Bike ID: <input type='number' name='trip[bike_id]' value="<%= @trip.bike_id %>"/><br/></p>
+            <p>Subscriber or Customer:
+              <select name='trip[subscription_type]'>
+                <option value="customer">Customer</option>
+                <option value="subscriber">Subscriber</option>
+              </select><br/>
+            </p><br/>
+            <p>Zip Code: <input type='text' name='trip[zip_code]' value="<%= @trip.zip_code %>"/><br/></p>
+            <input class="btn btn-default" type='submit' value='edit the trip'/>
+          </form>
+      </div>
     </div>
   </body>
 </html>

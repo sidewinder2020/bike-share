@@ -60,8 +60,8 @@
         <p style="color: black"><strong>City: <%= station.city %></strong></p>
         <p style="color: black"><strong>Installation Date: <%= station.installation_date %></strong></p>
         <p style="color: black"><strong>Dock Count: <%= station.dock_count %></strong></p>
-          <a class="btn btn-primary" href="/stations/<%= station.id %>/edit" role="button">Edit</a>
           <form action="/stations/<%= station.id %>" method="POST">
+            <a class="btn btn-primary" href="/stations/<%= station.id %>/edit" role="button">Edit</a>
             <input type="hidden" name="_method" value="DELETE">
             <input class="btn btn-default" type="submit" value="Delete">
           </form>
