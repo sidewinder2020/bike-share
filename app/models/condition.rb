@@ -1,3 +1,5 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
 require './app/models/trip'
 class Condition < ActiveRecord::Base
 	validates :weather_date,     presence: true
@@ -10,23 +12,25 @@ class Condition < ActiveRecord::Base
 	validates :precipitation,    presence: true
 	validates :zip_code,         presence: true
 
+
+	has_many :trips
 	has_many :trips, class_name: "Trip", foreign_key: "condition_id"
-	
+
 	def self.id_by_date(date)
 		find_by(weather_date: date).id
 	end
-	
+
 	# def self.join_table
 	# 	self.joins(:trips)
 	# end
-		
+
 	def self.breakout_temp(temp_range)
 		range = trip_arr(temp_range)
 		min   = range.values.last
 		max   = range.values.first
 		avg   = range.values.sum / range.values.count
 	end
-	
+
 	def self.trip_arr(temp_range)
 		select("condition.*, sum(trip.condition_id) AS total_trips")
 			.joins(:trips).where(max_temperature: (temp_range...(temp_range + 10)))
@@ -34,7 +38,7 @@ class Condition < ActiveRecord::Base
 		# Condition.joins(:trips).where(max_temperature: (temp_range...(temp_range + 10)))
 		# 	.group(:conditions).order("count_id DESC").count(:id)
 	end
-	
+
 	def self.breakout_temps
 		counter = 50.0
 		until counter == 100

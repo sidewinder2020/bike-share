@@ -1,24 +1,105 @@
-<h1>Add a New Condition:</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add a Condition</title>
 
-<form action= "/conditions" method="post">
-	<p>Enter a Date:</p>
-	<input type='text' name='weather_date'/><br/>
-	<p>Enter a Maximum Temperature:</p>
-	<input type='text' name='max_temperature'/><br/>
-	<p>Enter a Mean Temperature:</p>
-	<input type='text' name='mean_temperature'/><br/>
-	<p>Enter a Minimum Temperature:</p>
-	<input type='text' name='min_temperature'/><br/>
-	<p>Enter a Mean Humidity:</p>
-	<input type='text' name='mean_humidity'/><br/>
-	<p>Enter a Mean Visibility:</p>
-	<input type='text' name='mean_visibility'/><br/>
-	<p>Enter a Mean Wind Speed:</p>
-	<input type='text' name='mean_wind_speed'/><br/>
-	<p>Enter a Precipitation:</p>
-	<input type='text' name='precipitation'/><br/>
-	<p>Enter a Zip Code:</p>
-	<input type='text' name='zip_code'/><br/>
-	<input type='submit' value = "create new condition"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-</form>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <style>
+      html,
+      body,
+			
+        .view {
+          background: url("http://s.hswstatic.com/gif/hurricane-orig.jpg")no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Bike Share</a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/conditions">Conditions Index</a></li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/stations">Station Index</a></li>
+                <li><a href="/stations-dashboard">Station Analytics</a></li>
+                <li><a href="/trips">Trip Index</a></li>
+                <li><a href="/trips-dashboard">Trip Analytics</a></li>
+								<li><a href="/conditions">Condition Index</a></li>
+                <li><a href="/conditions-dashboard">Condition Analytics</a></li>
+
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      <div class="view">
+      <!--Intro content-->
+      <div class="full-bg-img flex-center">
+      </div>
+
+    <div class ="container">
+      <div class="page-header">
+        <h1><small></small></h1>
+      </div>
+      <h1 style="color: black"> Add a New Condition</h1>
+        <form action="/conditions" method="post">
+          <div class="form-group">
+            <label style="color: black" for="InputDate">Condition Date:</label>
+            <input type="text" class="form-control" name='weather_date' placeholder="Condition Date">
+          </div>
+					<div class="form-group">
+            <label style="color: black" for="InputHiTemp">High Temperature:</label>
+            <input type="text" class="form-control" name='max_temperature' placeholder="Condition High Temperature">
+          </div>
+					<div class="form-group">
+            <label style="color: black" for="InputLowTemp">Low Temperature:</label>
+            <input type="text" class="form-control" name='min_temperature' placeholder="Condition Low Temperature">
+          </div>
+					<div class="form-group">
+            <label style="color: black" for="InputAvgTemp">Average Temperature:</label>
+            <input type="text" class="form-control" name='mean_temperature' placeholder="Condition Average Temperature">
+          </div>
+					<div class="form-group">
+            <label style="color: black" for="InputAvgHum">Average Humidity:</label>
+            <input type="text" class="form-control" name='mean_humidity' placeholder="Condition Average Humidity">
+          </div>
+					<div class="form-group">
+            <label style="color: black" for="InputAvgVis">Average Visibility:</label>
+            <input type="text" class="form-control" name='mean_visibility' placeholder="Condition Average Visibility">
+          </div>
+					<div class="form-group">
+            <label style="color: black" for="InputAvgWind">Average Wind Speed:</label>
+            <input type="text" class="form-control" name='mean_wind_speed' placeholder="Condition Average Wind Speed">
+          </div>
+					<div class="form-group">
+            <label style="color: black" for="InputPrecip">Average Humidity:</label>
+            <input type="text" class="form-control" name='precipitation' placeholder="Condition Precipitation">
+          </div>
+
+
+
+          <input class="btn btn-default" type='submit' value = "Create this Station"/>
+        </form>
+    </div>
+  </body>
+</html>
