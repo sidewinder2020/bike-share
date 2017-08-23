@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Trip Analytics</title>
-
+    <title>Fun Times</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -15,32 +14,36 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
     <style>
+      html,
+      body,
         .view {
-          background: url("http://i.imgur.com/lJoDGqG.jpg")no-repeat center center fixed;
+          height: 100%;
+      }
+      .view {
+          background: url("http://data.whicdn.com/images/58110178/original.png")no-repeat center center fixed;
           -webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;
           background-size: cover;
       }
-        h3 {
-          color: black;
-        }
-        h1 {
-          color: black;
-        }
-        p {
-          color: black;
-        }
     </style>
   </head>
+
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Bike Share</a>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/trips/new">Add New Trip</a></li>
-            <li><a href="/trips">Trip Index</a></li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Don't Click Here<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/Joans_page">Joan's Page</a></li>
+                <li><a href="/Mikes_page">Mike's Page</a></li>
+                <li><a href="/Sams_page">Sam's Page</a></li>
+                <li><a href="/Ashs_page">Ash's Page</a></li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -59,49 +62,27 @@
       <div class="full-bg-img flex-center">
       </div>
 
-    <div class ="container">
-      <div class="page-header">
-        <h1><small></small></h1>
-      </div>
-        <div class="well well-sm">
-          <h1 class="text-center"> Trip Analytics </h1><br/>
-
-          <h4 class="text-center">Average duration of a ride:<br/>
-          <small><%= Trip.average_duration_of_a_trip %>minutes</small></h4>
-
-          <h4 class="text-center">Longest ride:<br/>
-          <small><%= Trip.longest_ride %></small></h4>
-
-          <h4 class="text-center">Shortest ride:<br/>
-          <small><%= Trip.shortest_ride %></small></h4>
-
-          <h4 class="text-center">Most popular starting station:<br/>
-          <small><%= Station.most_popular_starting_station %></small></h4>
-
-          <h4 class="text-center">Most popular ending station:<br/>
-          <small><%= Station.most_popular_ending_station %></small></h4>
-
-          <h4 class="text-center">Monthly ride breakdown:<br/>
-          <small><%= Trip.monthly_ride_breakdown %></small></h4>
-
-          <h4 class="text-center">Yearly ride breakdown:<br/>
-          <small><%= Trip.yearly_ride_breakdown %></small></h4>
-
-          <h4 class="text-center">Most ridden bike:<br/>
-          <small><%= Trip.hottest_bike %></small></h4>
-
-          <h4 class="text-center">Least ridden bike:<br/>
-          <small><%= Trip.most_neglected_bike %></small></h4>
-
-          <h4 class="text-center">Rider subscription breakdown:<br/>
-          <small><%= Trip.subscription_type_breakdown %></small></h4>
-
-          <h4 class="text-center">Most popular trip date:<br/>
-          <small><%= Trip.most_popular_trip_date %></small></h4>
-
-          <h4 class="text-center">Least popular trip date:<br/>
-          <small><%= Trip.least_popular_trip_date %></small></h4>
+      <div class ="container">
+        <div class="page-header">
+          <h1><small></small></h1>
         </div>
+        <div class="well well-sm">
+          <h1 class="text-center">Enter IF You Dare</h1><br/>
+
+          <h3 class="text-center">Joan's Page:<br/>
+          <small><a href="/Joans_page">All outta Bubblegum</a></small></h3>
+
+          <h3 class="text-center">Mike's Page:<br/>
+          <small><a href="/Mikes_page">You knew this was comin'</a></small></h3>
+
+          <h3 class="text-center">Sam's Page:<br/>
+          <small><a href="/Sams_page">Ubisoft goes Steamworks Bye Bye always on DRM</a></small></h3>
+
+          <h3 class="text-center">Ash's Page<br/>
+          <small><a href="/Ashs_page">I have to return some video tapes</a></small></h3>
+        </div>
+      </div>
+
     </div>
   </body>
 </html>

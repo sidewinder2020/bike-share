@@ -128,4 +128,23 @@ class BikeShareApp < Sinatra::Base
     redirect '/conditions'
   end
 
+  get '/Joans_page' do
+    erb :joans_page
+  end
+
+  get '/Mikes_page' do
+    erb :mikes_page
+  end
+
+  get '/Sams_page' do
+    erb :sams_page
+  end
+
+  get '/Ashs_page' do
+    erb :ashs_page
+  end
+
+  get '/fun' do
+    erb :fun
+  end
 end
