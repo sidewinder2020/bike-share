@@ -8,7 +8,6 @@ RSpec.describe "When user goes to the station id page, user can see" do
     Trip.create(duration: 80000, start_date: "1969/6/20", end_date: "1969/7/20", start_station_id: 1, end_station_id: 1, bike_id: 777, subscription_type: "subscriber")
 
     visit "/stations/#{station_a.id}"
-    save_and_open_page
     expect(page).to have_content(station_a.most_frequent_bike_id)
   end
 end
