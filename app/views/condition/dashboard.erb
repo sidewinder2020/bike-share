@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Trip Index</title>
+    <title>Weather Analytics</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -14,26 +15,32 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
     <style>
-      .view {
-          background: url("http://i.imgur.com/4J9PIxQ.jpg?1")no-repeat center center fixed;
+        .view {
+          background: url("http://i.imgur.com/lJoDGqG.jpg")no-repeat center center fixed;
           -webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;
           background-size: cover;
       }
-      .mine_off{
-        margin-left:200px
-      }
+        h3 {
+          color: black;
+        }
+        h1 {
+          color: black;
+        }
+        p {
+          color: black;
+        }
     </style>
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid mine-off">
+      <div class="container-fluid">
         <a class="navbar-brand" href="/">Bike Share</a>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/trips/new">Add New Trip</a></li>
-            <li><a href="/trips-dashboard">Trip Analytics</a></li>
+            <li><a href="/conditions/new">Add New Condition</a></li>
+            <li><a href="/conditions">Weather Index</a></li>
             <li class="dropdown">
               <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -41,7 +48,7 @@
                 <li><a href="/stations-dashboard">Station Analytics</a></li>
                 <li><a href="/trips">Trip Index</a></li>
                 <li><a href="/trips-dashboard">Trip Analytics</a></li>
-                <li><a href="/conditions">Weather Index</a></li>
+								<li><a href="/conditions">Weather Index</a></li>
                 <li><a href="/weather-dashboard">Weather Analytics</a></li>
               </ul>
             </li>
@@ -50,27 +57,44 @@
       </div>
     </nav>
 
-        <div class="view">
-        <div class="full-bg-img flex-center">
-        </div>
+      <div class="view">
+      <div class="full-bg-img flex-center">
+      </div>
 
-    <div class="container">
+    <div class ="container">
       <div class="page-header">
         <h1><small></small></h1>
       </div>
-      <h1 class="h1-responsive" style="color: black"> Trip Index </h1>
+      <div class="well well-sm">
+        <h1 class="text-center">Weather Analytics</h1><br/>
 
-      <% @trips.each do |trip| %>
-        <h3><a href="/trips/<%= trip.id %>"><%= trip.start_station.name %> - <%= trip.end_station.name %></a></h3>
-        <p>Start Date - End Date: <%= trip.start_date %> - <%= trip.end_date %></p>
-        <p>subscriber Type: <%= trip.subscription_type %></p>
-        <form action="/trips/<%= trip.id %>" method="POST">
-          <a class="btn btn-primary" href="/trips/<%= trip.id %>/edit" role="button">Edit</a>
-          <input type="hidden" name="_method" value="DELETE">
-          <input class="btn btn-default" type="submit" value="Delete"/>
-        </form>
-      <% end %>
-      <%= will_paginate @pages %>
+        <h4 class="text-center">Breakout of (Avg/Highest/Lowest) # of Rides, Acc to Temp:</h4>
+        <h4 class="text-center"><small>Avg<br/>
+        Max<br/>
+        Min</small></h4><br/>
+
+        <h4 class="text-center">Breakout of (Avg/Highest/Lowest) number of rides, on days with precipitation (in 1/2 inch increments):</h4>
+        <h4 class="text-center"><small>Avg<br/>
+        Max<br/>
+        Min</small></h4><br/>
+
+        <h4 class="text-center">Breakout of (Avg/Highest/Lowest) number of rides on days, based on Wind Speed:</h4>
+        <h4 class="text-center"><small>Avg<br/>
+        Max<br/>
+        Min</small></h4><br/>
+
+        <h4 class="text-center">Breakout of (Avg/Highest/Lowest) number of rides on days, based on visibility:</h4>
+        <h4 class="text-center"><small>Avg<br/>
+        Max<br/>
+        Min</small></h4><br/>
+
+        <h4 class="text-center">Weather on the day with the highest rides:</h4>
+        <h4 class="text-center"><small><a href="/conditions/<% Condition.best_weather_trip_day.id %>"><% Condition.best_weather_trip_day.weather_date %></a></small></h4><br/>
+
+        <h4 class="text-center">Weather on the day with the lowest rides:</h4>
+        <h4 class="text-center"><small><a href="/conditions/<% Condition.worst_weather_trip_day.id %>"><% Condition.worst_weather_trip_day.weather_date %></a></small></h4><br/>
+
+      </div>
     </div>
   </body>
 </html>

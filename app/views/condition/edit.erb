@@ -32,7 +32,7 @@
         <a class="navbar-brand" href="/">Bike Share</a>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/conditions">Condition Index</a></li>
+            <li><a href="/conditions">Weather Index</a></li>
             <li class="dropdown">
               <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -40,8 +40,8 @@
                 <li><a href="/stations-dashboard">Station Analytics</a></li>
                 <li><a href="/trips">Trip Index</a></li>
                 <li><a href="/trips-dashboard">Trip Analytics</a></li>
-								<li><a href="/conditions">Condition Index</a></li>
-                <li><a href="/conditions-dashboard">Condition Analytics</a></li>
+								<li><a href="/conditions">Weather Index</a></li>
+                <li><a href="/weather-dashboard">Weather Analytics</a></li>
               </ul>
             </li>
           </ul>
@@ -62,37 +62,42 @@
           <form action="/conditions/<%= @condition.id %>" method="post">
           <input type="hidden" name="_method" value="PUT" />
             <div class="form-group">
-              <label style="color: black" for="InputConditionDate">Condition</label>
-              <input type="text" class="form-control" name='condition[weather_date]' value="<%= @condition.weather_date %>" placeholder="Condition Date">
+              <label style="color: black" for="InputConditionDate">Condition Date</label>
+              <input type="date" class="form-control" name='condition[weather_date]' value="<%= @condition.weather_date %>" placeholder="Condition Date">
             </div>
 						<div class="form-group">
-              <label style="color: black" for="InputConditionHighTemp">Condition</label>
+              <label style="color: black" for="InputConditionHighTemp">High Temperature</label>
               <input type="text" class="form-control" name='condition[max_temperature]' value="<%= @condition.max_temperature %>" placeholder="Condition High Temp">
             </div>
 						<div class="form-group">
-              <label style="color: black" for="InputConditionLowTemp">Condition</label>
+              <label style="color: black" for="InputConditionLowTemp">Low Temperature</label>
               <input type="text" class="form-control" name='condition[min_temperature]' value="<%= @condition.min_temperature %>" placeholder="Condition Low Temp">
             </div>
 						<div class="form-group">
-              <label style="color: black" for="InputConditionAvgTemp">Condition</label>
+              <label style="color: black" for="InputConditionAvgTemp">Average Temperature</label>
               <input type="text" class="form-control" name='condition[mean_temperature]' value="<%= @condition.mean_temperature %>" placeholder="Condition Mean Temp">
             </div>
 						<div class="form-group">
-              <label style="color: black" for="InputConditionAvgHumd">Condition</label>
+              <label style="color: black" for="InputConditionAvgHumd">Average Humidity</label>
               <input type="text" class="form-control" name='condition[mean_humidity]' value="<%= @condition.mean_humidity %>" placeholder="Condition Mean Humidity">
             </div>
 						<div class="form-group">
-              <label style="color: black" for="InputConditionAvgVis">Condition</label>
+              <label style="color: black" for="InputConditionAvgVis">Average Visibility</label>
               <input type="text" class="form-control" name='condition[mean_visibility]' value="<%= @condition.mean_visibility %>" placeholder="Condition Mean Visibility">
             </div>
 						<div class="form-group">
-              <label style="color: black" for="InputConditionAvgWindSp">Condition</label>
+              <label style="color: black" for="InputConditionAvgWindSp">Average Wind Speed</label>
               <input type="text" class="form-control" name='condition[mean_wind_speed]' value="<%= @condition.mean_wind_speed %>" placeholder="Condition Mean Wind Speed">
             </div>
 						<div class="form-group">
-              <label style="color: black" for="InputConditionPrecip">Condition</label>
+              <label style="color: black" for="InputConditionPrecip">Precipitation</label>
               <input type="text" class="form-control" name='condition[precipitation]' value="<%= @condition.precipitation %>" placeholder="Condition Precipitation">
             </div>
+            <div class="form-group">
+              <label style="color: black" for="InputConditionZipCode">Zip Code</label>
+              <input type="text" class="form-control" name='condition[zip_code]' value="<%= @condition.zip_code %>" placeholder="Condition Precipitation">
+            </div>
+            <input class="btn btn-default" type='submit' value = "Submit"/>
           </form>
     </div>
   </body>

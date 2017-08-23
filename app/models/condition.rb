@@ -20,6 +20,11 @@ class Condition < ActiveRecord::Base
 		find_by(weather_date: date).id
 	end
 
+	# def self.join_table
+	# 	self.joins(:trips)
+	# end
+
+
 	def self.breakout(temp_range)
 		range = trip_temps(temp_range)
 		answers = Hash.new(0)
@@ -42,6 +47,7 @@ class Condition < ActiveRecord::Base
 			temp.merge!(counter=>breakout(counter))
 			counter += 10
 		end
+		temp
 	end
 
 	def self.breakout_inches(precip_range)
@@ -60,6 +66,7 @@ class Condition < ActiveRecord::Base
 			temp.merge!(counter=>breakout_inches(counter))
 			counter += 0.5
 		end
+		temp
 	end
 
 	def self.precip_trips(range)
@@ -75,6 +82,7 @@ class Condition < ActiveRecord::Base
 			speed.merge!(counter=>breakout_mph(counter))
 			count += 4.0
 		end
+		speed
 	end
 
 	def self.wind_speed_trips(range)
@@ -99,6 +107,7 @@ class Condition < ActiveRecord::Base
 			speed.merge!(counter=>breakout_sight(counter))
 			count += 4.0
 		end
+		speed
 	end
 
 	def self.sight_dist_trips(range)
@@ -118,12 +127,12 @@ class Condition < ActiveRecord::Base
 
 	def self.best_weather_trip_day
 		find( Trip.joins(:condition).group(:condition_id)
-			.order("count_id DESC").count(:id).keys.first).weather_date
+			.order("count_id DESC").count(:id).keys.first)
 	end
 
 	def self.worst_weather_trip_day
 		find( Trip.joins(:condition).group(:condition_id)
-			.order("count_id DESC").count(:id).keys.last).weather_date
+			.order("count_id DESC").count(:id).keys.last)
 	end
 
 end
