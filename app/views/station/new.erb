@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Station</title>
+    <title>Add a Station</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -61,19 +61,26 @@
       <div class="page-header">
         <h1><small></small></h1>
       </div>
-      <h1> Add a New Station</h1>
-
-      <form action="/stations" method="post">
-        <p>Enter in a name:</p>
-        <input type='text' name='name'/><br/>
-        <p>Enter in a city:</p>
-        <input type='text' name='city'/><br/>
-        <p>Enter in an Installation Date:</p>
-        <input type='text' name='installation_date'/><br/>
-        <p>Enter in a dock count:</p>
-        <input type='integer' name='dock_count'/><br/>
-        <input class="btn btn-default" type='submit' value = "Create this Station"/>
-      </form>
+      <h1 style="color: black"> Add a New Station</h1>
+        <form action="/stations" method="post">
+          <div class="form-group">
+            <label style="color: black" for="InputName">Station Name</label>
+            <input type="text" class="form-control" name='name' placeholder="Station Name">
+          </div>
+          <div class="form-group">
+            <label style="color: black" for="InputCity">Station City</label>
+            <input type="text" class="form-control" name='installation_date' placeholder="Station City">
+          </div>
+          <div class="form-group">
+            <label style="color: black" for="InputInstallation">Installation Date</label>
+            <input type="date" class="form-control" name='installation_date' placeholder="Installation Date">
+          </div>
+          <div class="form-group">
+            <label style="color: black" for="InputDocks">Dock Count</label>
+            <input type="text" class="form-control" name='dock_count' placeholder="Dock Count">
+          </div>
+          <input class="btn btn-default" type='submit' value = "Create this Station"/>
+        </form>
     </div>
   </body>
 </html>

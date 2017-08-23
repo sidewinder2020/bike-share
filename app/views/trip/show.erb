@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Station</title>
+    <title>Trip</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -15,6 +15,11 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
     <style>
+      html,
+      body,
+        .view {
+          height: 100%;
+      }
         .view {
           background: url("http://i.imgur.com/4J9PIxQ.jpg?1")no-repeat center center fixed;
           -webkit-background-size: cover;
@@ -58,17 +63,15 @@
       <div class="page-header">
         <h1><small></small></h1>
       </div>
-        <h1>Trip</h1>
-        <a href="/trips">Trip Index</a>
-
+        <h1 style="color: black">Trip</h1>
         <h2><%= @trip.start_station.name %> - <%= @trip.end_station.name %></h2>
-
+        <p>Start Date - End Date: </p>
         <h2><%= @trip.start_date %> - <%= @trip.end_date %></h2>
-
-        <p>Duration: <%= @trip.duration %></p>
-        <p>Bike ID: <%= @trip.bike_id %></p>
-        <p>Subscription Type: <%= @trip.subscription_type %></p>
-        <p>Zip Code: <%= @trip.zip_code %></p>
+        <p>General Information: </p>
+        <h5>Duration: <%= @trip.duration %></h5>
+        <h5>Bike ID: <%= @trip.bike_id %></h5>
+        <h5>Subscription Type: <%= @trip.subscription_type %></h5>
+        <h5>Zip Code: <%= @trip.zip_code %></h5>
     </div>
   </body>
 </html>

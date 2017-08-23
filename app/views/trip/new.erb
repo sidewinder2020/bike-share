@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Station</title>
+    <title>Add a Trip</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -55,28 +55,46 @@
       <div class="page-header">
         <h1><small></small></h1>
       </div>
-        <h1>Add a New Trip</h1>
-
-        <form action="/trips" method="post">
-          <p>Enter a start station and an end station:</p>
-          <input type='text' name='start_station_id'/><br/>
-          <input type='text' name='end_station_id'/><br/>
-          <p>Enter a start date and end date:</p>
-          <input type='text' name='start_date'/><br/>
-          <input type='text' name='end_date'/><br/>
-          <p>Enter a duration, for your trip:</p>
-          <input type='text' name='duration'/><br/>
-          <p>Enter a Bike ID:</p>
-          <input type='text' name='bike_id'/><br/>
-          <p>Choose a subscription type:</p>
-          <select name='subscription_type'>
-            <option value="customer">Customer</option>
-            <option value="subscriber">Subscriber</option>
-          </select><br/>
-          <p>Enter a zip code:</p>
-          <input type='text' name='zip_code'/><br/>
-          <input class="btn btn-default" type='submit' value='create new trip'/>
-        </form>
+        <h1 style="color: black">Add a New Trip</h1>
+          <form action="/trips" method="post">
+            <div class="form-group">
+              <label style="color: black" for="InputStartStation">Start Station ID</label>
+              <input type="text" class="form-control" name='start_station_id' placeholder="Start Station ID">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputEndStation">End Station ID</label>
+              <input type="text" class="form-control" name='end_station_id' placeholder="End Station ID">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputSDate">Start Date</label>
+              <input type="date" class="form-control" name='start_date' placeholder="Start Date">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputEDate">End Date</label>
+              <input type="date" class="form-control" name='end_date' placeholder="End Date">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputDur">Duration</label>
+              <input type="text" class="form-control" name='duration' placeholder="Duration of Trip">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputBikeN">Bike ID</label>
+              <input type="text" class="form-control" name='bike_id' placeholder="Bike Identification Number">
+            </div>
+            <div class="form-group">
+              <label style="color: black" for="InputZ">Zip Code</label>
+              <input type="text" class="form-control" name='zip_code' placeholder="Zip Code">
+            </div>
+            <div>
+              <p style="color: black">Subscriber or Customer:
+                <select name='trip[subscription_type]'>
+                  <option value="customer">Customer</option>
+                  <option value="subscriber">Subscriber</option>
+                </select><br/>
+              </p>
+            </div>
+            <input class="btn btn-default" type='submit' value='create new trip'/>
+          </form>
     </div>
   </body>
 </html>
