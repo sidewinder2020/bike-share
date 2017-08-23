@@ -1,15 +1,29 @@
-<h1>Trip Index</h1>
-<a href="/trips/new">Add a New Trip</a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Station Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<% @trips.each do |trip| %>
-  <h3><a href="/trips/<%= trip.id %>"><%= trip.start_station.name %> - <%= trip.end_station.name %></a></h3>
-  <p>Start Date - End Date: <%= trip.start_date %> - <%= trip.end_date %></p>
-  <p>subscriber Type: <%= trip.subscription_type %></p>
-  <a href="/trips/<%= trip.id %>/edit" value='Edit'>Edit</a>
-  <form action="/trips/<%= trip.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete"/>
-  </form>
-<% end %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<h3><%= will_paginate @pages %></h3>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+      <h1>Trip Index</h1>
+      <a class="btn btn-default" href="/trips/new" role="button">Add a Trip</a>
+
+      <% @trips.each do |trip| %>
+        <h3><a href="/trips/<%= trip.id %>"><%= trip.start_station.name %> - <%= trip.end_station.name %></a></h3>
+        <p>Start Date - End Date: <%= trip.start_date %> - <%= trip.end_date %></p>
+        <p>subscriber Type: <%= trip.subscription_type %></p>
+        <a class="btn btn-primary" href="/trips/<%= trip.id %>/edit" role="button">Edit</a>
+        <form action="/trips/<%= trip.id %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="delete"/>
+        </form>
+      <% end %>
+
+      <h3><%= will_paginate @pages %></h3>
+  </body>
+</html>

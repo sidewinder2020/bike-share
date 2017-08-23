@@ -1,13 +1,70 @@
-<h1> Add a New Station</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Station</title>
 
-<form action="/stations" method="post">
-  <p>Enter in a name:</p>
-  <input type='text' name='name'/><br/>
-  <p>Enter in a city:</p>
-  <input type='text' name='city'/><br/>
-  <p>Enter in an Installation Date:</p>
-  <input type='text' name='installation_date'/><br/>
-  <p>Enter in a dock count:</p>
-  <input type='integer' name='dock_count'/><br/>
-  <input type='submit' value = "create new station"/>
-</form>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+      html,
+      body,
+        .view {
+          height: 100%;
+      }
+
+        .view {
+          background: url("http://wallpapercave.com/wp/UYnUUzz.jpg")no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="/">Bike Share</a>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/stations">Station Index</a></li>
+          <li class="dropdown">
+            <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations">Station Index</a></li>
+              <li><a href="/stations-dashboard">Station Analytics</a></li>
+              <li><a href="/trips">Trip Index</a></li>
+              <li><a href="/trips-dashboard">Trip Analytics</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="view">
+      <!--Intro content-->
+      <div class="full-bg-img flex-center">
+      </div>
+
+    <div class ="container">
+      <div class="page-header">
+        <h1><small></small></h1>
+      </div>
+      <h1> Add a New Station</h1>
+
+      <form action="/stations" method="post">
+        <p>Enter in a name:</p>
+        <input type='text' name='name'/><br/>
+        <p>Enter in a city:</p>
+        <input type='text' name='city'/><br/>
+        <p>Enter in an Installation Date:</p>
+        <input type='text' name='installation_date'/><br/>
+        <p>Enter in a dock count:</p>
+        <input type='integer' name='dock_count'/><br/>
+        <input class="btn btn-default" type='submit' value = "Create this Station"/>
+      </form>
+    </div>
+  </body>
+</html>
