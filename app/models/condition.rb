@@ -1,3 +1,5 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
 require './app/models/trip'
 class Condition < ActiveRecord::Base
 	validates :weather_date,     presence: true

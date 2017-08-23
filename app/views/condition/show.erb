@@ -1,10 +1,83 @@
-<h1>Condition</h1>
-<a = href="/conditions">Condition Index</a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Condition</title>
 
-<h2><%= @condition.weather_date %></h2>
-<h4>Temperature Range: <%= @condition.min_temperature %> - <%= @condition.max_temperature %></h4>
-<h4>Temperature Average: <%= @condition.mean_temperature %> </h4>
-<p>Humidity Average:<%= @condition.mean_humidity %></p></p>
-<p>Visibility Average: <%= @condition.mean_visibility %></p>
-<p>Wind Speed Average: <%= @condition.mean_wind_speed %></p>
-<p>Precipitation: <%= @condition.precipitation %></p>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <style>
+			html,
+			body,
+				.view {
+					height: 100%;
+			}
+        .view {
+          background: url("http://www.ahn09.com/outdoorresortpalmsprings/picture/sunnyday.jpg")no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+      h3,p,h1 {
+        color: black;
+      }
+			#make-it-right{
+				margin-left: 200px
+			}
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Bike Share</a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/condition">Condition Index</a></li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/stations">Station Index</a></li>
+                <li><a href="/stations-dashboard">Station Analytics</a></li>
+                <li><a href="/trips">Trip Index</a></li>
+                <li><a href="/trips-dashboard">Trip Analytics</a></li>
+								<li><a href="/conditions">Condition Index</a></li>
+                <li><a href="/conditions-dashboard">Condition Analytics</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      <div class="view">
+      <!--Intro content-->
+      <div class="full-bg-img flex-center">
+      </div>
+
+    <div class ="container" id = "make-it-right">
+      <div class="page-header">
+        <h1><small></small></h1>
+      </div>
+      <h1><%= @condition.weather_date %></h1>
+
+      <h3>General Information: </h3>
+      <p><strong>Temperature range:</strong> <%= @condition.min_temperature %> - <%= @condition.max_temperature %></p>
+      <p><strong>Average Temperature :</strong> <%= @condition.mean_temperature %></p>
+      <p><strong>Average Humidity</strong> <%= @condition.mean_humidity %></p>
+			<p><strong>Average Visibility</strong> <%= @condition.mean_visibility %></p>
+			<p><strong>Average Wind Speed</strong> <%= @condition.mean_wind_speed %></p>
+			<p><strong>Precipitation</strong> <%= @condition.precipitation %></p>
+
+		</div>
+	</body>
+</html>

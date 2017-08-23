@@ -1,8 +1,8 @@
-<h1>Condition Index</h1>
+<!-- <h1>Condition Index</h1>
 <a href="/conditions/new" value= 'new'>Add a New Condition</a>
 
 <% @conditions.each do |condition| %>
-	<h3><a href="/conditions/<%= condition.id %>"><%= condition.weather_date %></h3>
+	<h3><a href="/conditions/<%= condition.id %>"><%= condition.weather_date %></a></h3>
 
 	<h4>Temperature Range: <%= condition.min_temperature %> - <%= condition.max_temperature %></h4>
 	<h4>Temperature Average: <%= condition.mean_temperature %> </h4>
@@ -14,4 +14,83 @@
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="delete"/>
   </form>
-<% end %>
+<% end %> -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Condition Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <style>
+      .view {
+          background: url("http://www.diaryinc.com/wp-content/uploads/2016/03/weather.gif")no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Bike Share</a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/conditions/new">Add New Condition</a></li>
+            <li><a href="/conditions-dashboard">Condition Analytics</a></li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+								<li><a href="/stations">Station Index</a></li>
+                <li><a href="/stations-dashboard">Station Analytics</a></li>
+                <li><a href="/trips">Trip Index</a></li>
+                <li><a href="/trips-dashboard">Trip Analytics</a></li>
+								<li><a href="/conditions">Condition Index</a></li>
+                <li><a href="/conditions-dashboard">Condition Analytics</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+        <div class="view">
+        <div class="full-bg-img flex-center">
+        </div>
+
+    <div class="container">
+      <div class="page-header">
+        <h1><small></small></h1>
+      </div>
+      <h1 class="h1-responsive" style="color: black"> Condition Index </h1>
+
+      <% @conditions.each do |condition| %>
+        <h3><strong><a href="/conditions/<%= condition.id %>"><%= condition.weather_date %></a></strong></h3>
+        <p style="color: black"><strong>Temperature Range: <%= condition.min_temperature %> <%= condition.max_temperature %></strong></p>
+				<p style="color: black"><strong>Average Temperature: <%= condition.mean_temperature %></strong></p>
+				<p style="color: black"><strong>Average Humidity: <%= condition.mean_humidity %></strong></p>
+				<p style="color: black"><strong>Average Visibility: <%= condition.mean_visibility %></strong></p>
+				<p style="color: black"><strong>Average Wind Speed: <%= condition.mean_wind_speed %></strong></p>
+				<p style="color: black"><strong>Precipitation: <%= condition.precipitation %></strong></p>
+        <form action="/conditions/<%= condition.id %>" method="POST">
+            <a class="btn btn-primary" href="/conditions/<%= condition.id %>/edit" role="button">Edit</a>
+            <input type="hidden" name="_method" value="DELETE">
+            <input class="btn btn-default" type="submit" value="Delete">
+          </form>
+        <% end %>
+				<%= will_paginate @pages %>
+    </div>
+  </body>
+</html>
