@@ -14,12 +14,6 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
     <style>
-      html,
-      body,
-        .view {
-          height: 100%;
-      }
-
         .view {
           background: url("http://wallpapercave.com/wp/UYnUUzz.jpg")no-repeat center center fixed;
           -webkit-background-size: cover;
@@ -59,24 +53,47 @@
       <div class="page-header">
         <h1><small></small></h1>
       </div>
-          <h1 style="color: black">Edit your Trip</h1>
-          <form action="/trips/<%= @trip.id %>" method="post">
-            <input type="hidden" name="_method" value="PUT" />
-            <p>Start Station ID: <input type='number' name='trip[start_station_id]' value="<%= @trip.start_station_id %>"/><br/></p>
-            <p>End Station ID: <input type='number' name='trip[end_station_id]' value="<%= @trip.end_station_id %>"/><br/></p>
-            <p>Start Date: <input type='date' name='trip[start_date]' value="<%= @trip.start_date %>"/><br/></p>
-            <p>End Date: <input type='date' name='trip[end_date]' value="<%= @trip.end_date %>"/><br/></p>
-            <p>Duration: <input type='number' name='trip[duration]' value="<%= @trip.duration %>"/><br/></p>
-            <p>Bike ID: <input type='number' name='trip[bike_id]' value="<%= @trip.bike_id %>"/><br/></p>
-            <p>Subscriber or Customer:
+      <h1 style="color: black"> Edit your Trip </h1>
+        <form action="/trips/<%= @trip.id %>" method="post">
+        <input type="hidden" name="_method" value="PUT" />
+          <div class="form-group">
+            <label style="color: black" for="InputStartStationID">Start Station ID</label>
+            <input type="text" class="form-control" name='trip[start_station_id]' value="<%= @trip.start_station_id %>" placeholder="Start Station ID">
+          </div>
+          <div class="form-group">
+            <label style="color: black" for="InputEndStationID">End Station ID</label>
+            <input type="text" class="form-control" name='trip[end_station_id]' value="<%= @trip.end_station_id %>" placeholder="End Station ID">
+          </div>
+          <div class="form-group">
+            <label style="color: black" for="InputStartDate">Start Date</label>
+            <input type="date" class="form-control" name='trip[start_date]' value="<%= @trip.start_date %>" placeholder="Start Date">
+          </div>
+          <div class="form-group">
+            <label style="color: black" for="InputEndDate">End Date</label>
+            <input type="date" class="form-control" name='trip[end_date]' value="<%= @trip.end_date %>" placeholder="End Date">
+          </div>
+          <div class="form-group">
+            <label style="color: black" for="InputDuration">Duration</label>
+            <input type="text" class="form-control" name='trip[duration]' value="<%= @trip.duration %>" placeholder="Duration of Trip">
+          </div>
+          <div class="form-group">
+            <label style="color: black" for="InputBikeID">Bike ID</label>
+            <input type="text" class="form-control" name='trip[bike_id]' value="<%= @trip.bike_id %>" placeholder="Bike Identification Number">
+          </div>
+          <div class="form-group">
+            <label style="color: black" for="InputZipCode">Zip Code</label>
+            <input type="text" class="form-control" name='trip[zip_code]' value="<%= @trip.zip_code %>" placeholder="Zip Code">
+          </div>
+          <div>
+            <p style="color: black">Subscriber or Customer:
               <select name='trip[subscription_type]'>
                 <option value="customer">Customer</option>
                 <option value="subscriber">Subscriber</option>
               </select><br/>
-            </p><br/>
-            <p>Zip Code: <input type='text' name='trip[zip_code]' value="<%= @trip.zip_code %>"/><br/></p>
-            <input class="btn btn-default" type='submit' value='edit the trip'/>
-          </form>
+            </p>
+          </div>
+          <input class="btn btn-default" type='submit' value='edit the trip'/>
+        </form>
       </div>
     </div>
   </body>
