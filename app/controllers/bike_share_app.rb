@@ -96,7 +96,7 @@ class BikeShareApp < Sinatra::Base
   get '/conditions' do
     Condition.connection
     @pages = Condition.paginate(page: params[:page], :per_page => 30)
-    @condition = Condition.order('start_date DESC').page(params[:page])
+    @conditions = Condition.order('start_date DESC').page(params[:page])
     erb :'/condition/index'
   end
 
