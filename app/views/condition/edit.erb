@@ -1,15 +1,99 @@
-<h1> Edit your condtion </h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit a Condition</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<form action="/conditions/<%= @condition.id %>" method="post">
-	<input type="hidden" name="_method" value="PUT" / />
-	<input type='text' name ='condition[weather_date]' value="<%= @condition.weather_date %>" />
-	<input type='text' name ='condition[max_temperature]' value="<%= @condition.max_temperature %>" />
-	<input type='text' name ='condition[mean_temperature]' value="<%= @condition.mean_temperature %>" />
-	<input type='text' name ='condition[min_temperature]' value="<%= @condition.min_temperature %>" />
-	<input type='text' name ='condition[mean_humidity]' value="<%= @condition.mean_humidity %>" />
-	<input type='text' name ='condition[mean_visibility]' value="<%= @condition.mean_visibility %>" />
-	<input type='text' name ='condition[mean_wind_speed]' value="<%= @condition.mean_wind_speed %>" />
-	<input type='text' name ='condition[precipitation]' value="<%= @condition.precipitation %>" />
-	<input type='text' name ='condition[zip_code]' value="<%= @condition.zip_code %>" />
-	<input type='submit' value = "edit the condition"/>
-</form>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <style>
+
+
+
+        .view {
+          background: url("http://3.bp.blogspot.com/-2HiEI9EqIMM/Vb6a27fJ1MI/AAAAAAAABLU/YYvbaYPWLTM/s1600/God-of-war-4-concept.jpg")no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Bike Share</a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/conditions">Condition Index</a></li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/stations">Station Index</a></li>
+                <li><a href="/stations-dashboard">Station Analytics</a></li>
+                <li><a href="/trips">Trip Index</a></li>
+                <li><a href="/trips-dashboard">Trip Analytics</a></li>
+								<li><a href="/conditions">Condition Index</a></li>
+                <li><a href="/conditions-dashboard">Condition Analytics</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      <div class="view">
+      <!--Intro content-->
+      <div class="full-bg-img flex-center">
+      </div>
+
+    <div class="container">
+      <div class="page-header">
+        <h1><small></small></h1>
+      </div>
+        <h1 style="color: black"> Edit your Conditions: </h1>
+          <form action="/conditions/<%= @condition.id %>" method="post">
+          <input type="hidden" name="_method" value="PUT" />
+            <div class="form-group">
+              <label style="color: black" for="InputConditionDate">Condition</label>
+              <input type="text" class="form-control" name='condition[weather_date]' value="<%= @condition.weather_date %>" placeholder="Condition Date">
+            </div>
+						<div class="form-group">
+              <label style="color: black" for="InputConditionHighTemp">Condition</label>
+              <input type="text" class="form-control" name='condition[max_temperature]' value="<%= @condition.max_temperature %>" placeholder="Condition High Temp">
+            </div>
+						<div class="form-group">
+              <label style="color: black" for="InputConditionLowTemp">Condition</label>
+              <input type="text" class="form-control" name='condition[min_temperature]' value="<%= @condition.min_temperature %>" placeholder="Condition Low Temp">
+            </div>
+						<div class="form-group">
+              <label style="color: black" for="InputConditionAvgTemp">Condition</label>
+              <input type="text" class="form-control" name='condition[mean_temperature]' value="<%= @condition.mean_temperature %>" placeholder="Condition Mean Temp">
+            </div>
+						<div class="form-group">
+              <label style="color: black" for="InputConditionAvgHumd">Condition</label>
+              <input type="text" class="form-control" name='condition[mean_humidity]' value="<%= @condition.mean_humidity %>" placeholder="Condition Mean Humidity">
+            </div>
+						<div class="form-group">
+              <label style="color: black" for="InputConditionAvgVis">Condition</label>
+              <input type="text" class="form-control" name='condition[mean_visibility]' value="<%= @condition.mean_visibility %>" placeholder="Condition Mean Visibility">
+            </div>
+						<div class="form-group">
+              <label style="color: black" for="InputConditionAvgWindSp">Condition</label>
+              <input type="text" class="form-control" name='condition[mean_wind_speed]' value="<%= @condition.mean_wind_speed %>" placeholder="Condition Mean Wind Speed">
+            </div>
+						<div class="form-group">
+              <label style="color: black" for="InputConditionPrecip">Condition</label>
+              <input type="text" class="form-control" name='condition[precipitation]' value="<%= @condition.precipitation %>" placeholder="Condition Precipitation">
+            </div>
+          </form>
+    </div>
+  </body>
+</html>
