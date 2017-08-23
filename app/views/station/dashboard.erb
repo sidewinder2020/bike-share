@@ -65,31 +65,40 @@
         <h1><small></small></h1>
       </div>
       <div class="well well-sm">
-        <h1>Station Analytics</h1>
+        <h1 class="text-center">Station Analytics</h1><br/>
+
+        <h4 class="text-center">Count of all stations:<br/>
+        <small><%= Station.count %></small></h4>
+
+        <h4 class="text-center">Average Dock Count per Station:<br/>
+        <small><%= Station.average_bikes_available_per_station %></small></h4>
+
+        <h4 class="text-center">Most Bikes available at a Station:<br/>
+        <small><%= Station.maximum_dock_count %></small></h4>
+
+        <h4 class="text-center">Station(s) with the Most Bikes Available:</h4>
+        <% Station.station_with_maximum_dock_count.each do |station| %>
+        <h4 class="text-center"><small><%= station.name %></small></h4>
+        <% end %>
+
+        <h4 class="text-center">Fewest Bikes available at a Station</h4>
+        <h4 class="text-center"><small><%= Station.minimum_dock_count %></small></h4>
+
+        <h4 class="text-center">Station(s) with the Fewest Bikes Available</h4>
+        <% Station.station_with_minimum_dock_count.each do |station| %>
+        <h4 class="text-center"><small><%= station.name %></small></h4>
+        <% end %>
+
+        <h4 class="text-center">Most recent station and installation date:</h4>
+        <% Station.newest_station.each do |station| %>
+        <h4 class="text-center"><small><%= station.name %>, <%= station.installation_date %></small></h4>
+        <% end %>
+
+        <h4 class="text-center">Oldest station and installation date:</h4>
+        <% Station.oldest_station.each do |station| %>
+        <h4 class="text-center"><small><%= station.name %>, <%= station.installation_date %></small></h4>
+        <% end %>
       </div>
-      <h3>Count of all stations:</h3><p><%= Station.count %></p>
-
-      <h3>Average Dock Count per Station</h3><p><%= Station.average_bikes_available_per_station %></p>
-
-      <h3>Most Bikes available at a Station</h3><p><%= Station.maximum_dock_count %></p>
-
-      <h3>Station(s) with the Most Bikes Available</h3><% Station.station_with_maximum_dock_count.each do |station| %>
-                                                    <p><%= station.name %></p>
-                                                    <% end %>
-
-      <h3>Fewest Bikes available at a Station</h3><p><%= Station.minimum_dock_count %></p>
-
-      <h3>Station(s) with the Fewest Bikes Available</h3><% Station.station_with_minimum_dock_count.each do |station| %>
-                                                    <p><%= station.name %></p>
-                                                    <% end %>
-
-      <h3>Most recent station and installation date:</h3> <% Station.newest_station.each do |station| %>
-                                                    <p><%= station.name %>, <%= station.installation_date %></p>
-                                                    <% end %>
-
-      <h3>Oldest station and installation date:</h3> <% Station.oldest_station.each do |station| %>
-                                                    <p><strong><%= station.name %>, <%= station.installation_date %></strong></p>
-                                                    <% end %>
     </div>
   </body>
 </html>

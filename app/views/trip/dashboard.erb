@@ -64,44 +64,44 @@
         <h1><small></small></h1>
       </div>
         <div class="well well-sm">
-          <h1> Trip Analytics </h1>
+          <h1 class="text-center"> Trip Analytics </h1><br/>
+
+          <h4 class="text-center">Average duration of a ride:<br/>
+          <small><%= Trip.average_duration_of_a_trip %>minutes</small></h4>
+
+          <h4 class="text-center">Longest ride:<br/>
+          <small><%= Trip.longest_ride %></small></h4>
+
+          <h4 class="text-center">Shortest ride:<br/>
+          <small><%= Trip.shortest_ride %></small></h4>
+
+          <h4 class="text-center">Most popular starting station:<br/>
+          <small><%= Station.most_popular_starting_station %></small></h4>
+
+          <h4 class="text-center">Most popular ending station:<br/>
+          <small><%= Station.most_popular_ending_station %></small></h4>
+
+          <h4 class="text-center">Monthly ride breakdown:<br/>
+          <small><%= Trip.monthly_ride_breakdown %></small></h4>
+
+          <h4 class="text-center">Yearly ride breakdown:<br/>
+          <small><%= Trip.yearly_ride_breakdown %></small></h4>
+
+          <h4 class="text-center">Most ridden bike:<br/>
+          <small><%= Trip.hottest_bike %></small></h4>
+
+          <h4 class="text-center">Least ridden bike:<br/>
+          <small><%= Trip.most_neglected_bike %></small></h4>
+
+          <h4 class="text-center">Rider subscription breakdown:<br/>
+          <small><%= Trip.subscription_type_breakdown %></small></h4>
+
+          <h4 class="text-center">Most popular trip date:<br/>
+          <small><%= Trip.most_popular_trip_date %></small></h4>
+
+          <h4 class="text-center">Least popular trip date:<br/>
+          <small><%= Trip.least_popular_trip_date %></small></h4>
         </div>
-
-        <h3>Average duration of a ride:</h3>
-        <%= Trip.average_duration_of_a_trip %> minutes
-
-        <h3>Longest ride: </h3>
-        <%= Trip.longest_ride %>
-
-        <h3>Shortest ride:</h3>
-        <%= Trip.shortest_ride %>
-
-        <h3>Most popular starting station: </h3>
-        <%= Station.most_popular_starting_station %>
-
-        <h3>Most popular ending station: </h3>
-        <%= Station.most_popular_ending_station %>
-
-        <h3>Monthly ride breakdown:</h3>
-        <%= Trip.monthly_ride_breakdown %>
-
-        <h3>Yearly ride breakdown </h3>
-        <%= Trip.yearly_ride_breakdown %>
-
-        <h3>Most ridden bike: </h3>
-        <%= Trip.hottest_bike %>
-
-        <h3>Least ridden bike</h3>
-        <%= Trip.most_neglected_bike %>
-
-        <h3>Rider subscription breakdown </h3>
-        <%= Trip.subscription_type_breakdown %>
-
-        <h3>Most popular trip date: </h3>
-        <%= Trip.most_popular_trip_date %>
-
-        <h3>Least popular trip date: </h3>
-        <%= Trip.least_popular_trip_date %>
     </div>
   </body>
 </html>
