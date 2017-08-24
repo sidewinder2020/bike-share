@@ -101,10 +101,10 @@
           <% end %></small></h4><br/>
 
         <h4 class="text-center">Weather on the day with the highest rides:</h4>
-        <h4 class="text-center"><small><a href="/conditions/<% Condition.best_weather_trip_day.id %>"><% Condition.best_weather_trip_day.weather_date %></a></small></h4><br/>
+        <h4 class="text-center"><small><a href="/conditions/<%= Condition.best_weather_trip_day.id %>"><%= Condition.best_weather_trip_day.weather_date %></a></small></h4><br/>
 
         <h4 class="text-center">Weather on the day with the lowest rides:</h4>
-        <h4 class="text-center"><small><a href="/conditions/<% Condition.worst_weather_trip_day.id %>"><% Condition.worst_weather_trip_day.weather_date %></a></small></h4><br/>
+        <h4 class="text-center"><small><a href="/conditions/<%= Condition.worst_weather_trip_day.id %>"><%= Condition.worst_weather_trip_day.weather_date %></a></small></h4><br/>
 
       </div>
     </div>
