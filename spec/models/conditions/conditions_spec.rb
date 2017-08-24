@@ -102,7 +102,7 @@ RSpec.describe "Condition" do
 		describe "breakout_temp" do
 			it "returns range of trips for temperature ranges" do
 				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
-				 														 min_temperature: 40.1,   mean_temperature: 45.3,
+				 														 min_temperature: 30.0,   mean_temperature: 45.3,
 																		 mean_humidity: 20.1,     mean_visibility: 2,
 																		 mean_wind_speed: 9,      precipitation: 3.1,zip_code: "80113")
 			 trip_1 = condition.trips.create!(duration: 600, start_date: "1991/8/14", end_date: "1969/4/21",
@@ -121,6 +121,30 @@ RSpec.describe "Condition" do
 				expect(Condition.breakout(40.0)[:min]).to eq(3)
 				expect(Condition.breakout(40.0)[:max]).to eq(3)
 				expect(Condition.breakout(40.0)[:avg]).to eq(3)
+			end
+			
+			it "returns all trips in 10 degree increments" do
+				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
+				 														 min_temperature: 40.0,   mean_temperature: 45.3,
+																		 mean_humidity: 20.1,     mean_visibility: 2,
+																		 mean_wind_speed: 9,      precipitation: 3.1,zip_code: "80113")
+			 trip_1 = condition.trips.create!(duration: 600, start_date: "1991/8/14", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+				trip_2 = condition.trips.create!(duration: 1200, start_date: "1991/8/14", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+
+				trip_3 = condition.trips.create!(duration: 180000, start_date: "1991/8/14", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+													 
+				temp_hash = {40.0=>{:min=>3,:max=>3,:avg=>3},50.0=>{:min=>nil,:max=>nil,:avg=>0},60.0=>{:min=>nil,:max=>nil,:avg=>0},
+										70.0=>{:min=>nil,:max=>nil,:avg=>0},80.0=>{:min=>nil,:max=>nil,:avg=>0},90.0=>{:min=>nil,:max=>nil,:avg=>0}}
+													 
+				expect(Condition.breakout_temps).to eq(temp_hash)
 			end
 		end
 			
@@ -142,10 +166,35 @@ RSpec.describe "Condition" do
 				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-
+													 
 				expect(Condition.breakout_inches(3.0)[:min]).to eq(3)
 				expect(Condition.breakout_inches(3.0)[:max]).to eq(3)
 				expect(Condition.breakout_inches(3.0)[:avg]).to eq(3)
+			end
+			
+			it "returns range of all trips for each .5in increment of precipitation" do
+				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
+				 														 min_temperature: 40.1,   mean_temperature: 45.3,
+																		 mean_humidity: 20.1,     mean_visibility: 2,
+																		 mean_wind_speed: 9,      precipitation: 3.1,zip_code: "80113")
+			 trip_1 = condition.trips.create!(duration: 600, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+				trip_2 = condition.trips.create!(duration: 1200, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+
+				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+													 
+				precip_hash ={0.0=>{:min=>nil, :max=>nil, :avg=>0},0.5=>{:min=>nil, :max=>nil, :avg=>0},1.0=>{:min=>nil, :max=>nil, :avg=>0},
+											1.5=>{:min=>nil, :max=>nil, :avg=>0},2.0=>{:min=>nil, :max=>nil, :avg=>0}, 2.5=>{:min=>nil, :max=>nil, :avg=>0},
+											3.0=>{:min=>3, :max=>3, :avg=>3}}
+											 
+				expect(Condition.breakout_precip).to eq(precip_hash)
 			end
 		end
 		
@@ -242,7 +291,7 @@ RSpec.describe "Condition" do
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
 						
-				expect(Condition.best_weather_trip_day).to eq(Date.parse('Wed, 14 Aug 1991'))
+				expect(Condition.best_weather_trip_day.id).to eq(1)
 			end
 		end
 		
@@ -273,7 +322,7 @@ RSpec.describe "Condition" do
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
 						
-				expect(Condition.worst_weather_trip_day).to eq(Date.parse('Thu, 15 Aug 1991'))
+				expect(Condition.worst_weather_trip_day.id).to eq(2)
 			end
 		end
 	end
