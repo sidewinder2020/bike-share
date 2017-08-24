@@ -123,7 +123,7 @@ RSpec.describe "Condition" do
 				expect(Condition.breakout(40.0)[:avg]).to eq(3)
 			end
 		end
-			
+
 		describe "breakout_precip" do
 			it "returns ranges of trips for precipitation ranges" do
 				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
@@ -148,7 +148,7 @@ RSpec.describe "Condition" do
 				expect(Condition.breakout_inches(3.0)[:avg]).to eq(3)
 			end
 		end
-		
+
 		describe ".wind_speed_trips" do
 			it "returns analytics for trips on days with mean wind speed" do
 				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
@@ -171,17 +171,17 @@ RSpec.describe "Condition" do
 				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-													 
+
 				trip_4 = condition_2.trips.create!(duration: 180000, start_date: "1991/8/15", end_date: "1991/8/15",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-						
+
 				expect(Condition.breakout_mph(8.0)[:min]).to eq(1)
 				expect(Condition.breakout_mph(8.0)[:max]).to eq(3)
 				expect(Condition.breakout_mph(8.0)[:avg]).to eq(2)
 			end
 		end
-		
+
 		describe ".sight_dist_trips" do
 			it "returns analytics for trips on days with mean visibilityin 4mi increments" do
 				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
@@ -204,17 +204,17 @@ RSpec.describe "Condition" do
 				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-													 
+
 				trip_4 = condition_2.trips.create!(duration: 180000, start_date: "1991/8/15", end_date: "1991/8/15",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-						
+
 				expect(Condition.breakout_sight(0.0)[:min]).to eq(1)
 				expect(Condition.breakout_sight(0.0)[:max]).to eq(3)
 				expect(Condition.breakout_sight(0.0)[:avg]).to eq(2)
 			end
 		end
-		
+
 		describe ".best_weather_trip_day" do
 			it "returns weather for day with most rides" do
 				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
@@ -237,15 +237,16 @@ RSpec.describe "Condition" do
 				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-													 
+
 				trip_4 = condition_2.trips.create!(duration: 180000, start_date: "1991/8/15", end_date: "1991/8/15",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-						
-				expect(Condition.best_weather_trip_day).to eq(Date.parse('Wed, 14 Aug 1991'))
+
+				expect(Condition.best_weather_trip_day).to eq(condition)
+				expect(Condition.best_weather_trip_day).to_not eq(condition_2)
 			end
 		end
-		
+
 		describe ".worst_weather_trip_day" do
 			it "returns weather for day with fewest rides" do
 				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
@@ -268,12 +269,13 @@ RSpec.describe "Condition" do
 				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-													 
+
 				trip_4 = condition_2.trips.create!(duration: 180000, start_date: "1991/8/15", end_date: "1991/8/15",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-						
-				expect(Condition.worst_weather_trip_day).to eq(Date.parse('Thu, 15 Aug 1991'))
+
+				expect(Condition.worst_weather_trip_day).to eq(condition_2)
+				expect(Condition.worst_weather_trip_day).to_not eq(condition)
 			end
 		end
 	end
