@@ -13,7 +13,7 @@ RSpec.describe "User can update a station" do
 	fill_in('station[installation_date]', with: '2012/1/1' )
 	fill_in('station[dock_count]',        with: "20"       )
 
-	click_on('edit the station')
+	click_on('Submit')
 	expect(current_path).to eq("/stations/1")
 
 	end
