@@ -122,7 +122,7 @@ RSpec.describe "Condition" do
 				expect(Condition.breakout(40.0)[:max]).to eq(3)
 				expect(Condition.breakout(40.0)[:avg]).to eq(3)
 			end
-			
+
 			it "returns all trips in 10 degree increments" do
 				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
 				 														 min_temperature: 40.0,   mean_temperature: 45.3,
@@ -140,10 +140,10 @@ RSpec.describe "Condition" do
 				trip_3 = condition.trips.create!(duration: 180000, start_date: "1991/8/14", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-													 
+
 				temp_hash = {40.0=>{:min=>3,:max=>3,:avg=>3},50.0=>{:min=>0,:max=>0,:avg=>0},60.0=>{:min=>0,:max=>0,:avg=>0},
 										70.0=>{:min=>0,:max=>0,:avg=>0},80.0=>{:min=>0,:max=>0,:avg=>0},90.0=>{:min=>0,:max=>0,:avg=>0}}
-													 
+
 				expect(Condition.breakout_temps).to eq(temp_hash)
 			end
 		end
@@ -166,12 +166,12 @@ RSpec.describe "Condition" do
 				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-													 
+
 				expect(Condition.breakout_inches(3.0)[:min]).to eq(3)
 				expect(Condition.breakout_inches(3.0)[:max]).to eq(3)
 				expect(Condition.breakout_inches(3.0)[:avg]).to eq(3)
 			end
-			
+
 			it "returns range of all trips for each .5in increment of precipitation" do
 				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
 				 														 min_temperature: 40.1,   mean_temperature: 45.3,
@@ -189,11 +189,11 @@ RSpec.describe "Condition" do
 				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-													 
+
 				precip_hash ={0.0=>{:min=>0, :max=>0, :avg=>0},0.5=>{:min=>0, :max=>0, :avg=>0},1.0=>{:min=>0, :max=>0, :avg=>0},
 											1.5=>{:min=>0, :max=>0, :avg=>0},2.0=>{:min=>0, :max=>0, :avg=>0}, 2.5=>{:min=>0, :max=>0, :avg=>0},
 											3.0=>{:min=>3, :max=>3, :avg=>3}}
-											 
+
 				expect(Condition.breakout_precip).to eq(precip_hash)
 			end
 		end
@@ -229,7 +229,7 @@ RSpec.describe "Condition" do
 				expect(Condition.breakout_mph(8.0)[:max]).to eq(3)
 				expect(Condition.breakout_mph(8.0)[:avg]).to eq(2)
 			end
-			
+
 			it "returns trips that occured on days with windspeed in 4mph increments" do
 				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
 																		 min_temperature: 40.1,   mean_temperature: 45.3,
@@ -251,13 +251,13 @@ RSpec.describe "Condition" do
 				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
-													 
+
 				trip_4 = condition_2.trips.create!(duration: 180000, start_date: "1991/8/15", end_date: "1991/8/15",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
 				speed_hash = {0.0=>{:min=>0, :max=>0, :avg=>0}, 4.0=>{:min=>0, :max=>0, :avg=>0},
 				 							8.0=>{:min=>1, :max=>3, :avg=>2}, 12.0=>{:min=>0, :max=>0, :avg=>0}}
-				
+
 				expect(Condition.breakout_speed).to eq(speed_hash)
 			end
 		end
@@ -293,7 +293,7 @@ RSpec.describe "Condition" do
 				expect(Condition.breakout_sight(0.0)[:max]).to eq(3)
 				expect(Condition.breakout_sight(0.0)[:avg]).to eq(2)
 			end
-			
+
 
 		describe ".best_weather_trip_day" do
 			it "returns weather for day with most rides" do
@@ -359,7 +359,7 @@ RSpec.describe "Condition" do
 
 				expect(Condition.worst_weather_trip_day).to eq(condition_2)
 				expect(Condition.worst_weather_trip_day).to_not eq(condition)
-
+				end
 			end
 		end
 	end
