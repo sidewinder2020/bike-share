@@ -20,17 +20,16 @@ class Condition < ActiveRecord::Base
 		find_by(weather_date: date).id
 	end
 
-	# def self.join_table
-	# 	self.joins(:trips)
-	# end
-
-
 	def self.breakout(temp_range)
 		range = trip_temps(temp_range)
 		answers = Hash.new(0)
-		answers[:min] = range.values.last
-		answers[:max] = range.values.first
-		answers[:avg] = range.values.sum / range.values.count
+		answers[:min] = (range.values.last || 0)
+		answers[:max] = (range.values.first || 0)
+		if range.values.count != 0
+			answers[:avg] = range.values.sum / range.values.count  
+		else
+			answers[:avg] = 0
+		end
 		answers
 	end
 
@@ -53,9 +52,13 @@ class Condition < ActiveRecord::Base
 	def self.breakout_inches(precip_range)
 		range = precip_trips(precip_range)
 		answers = Hash.new(0)
-		answers[:min] = range.values.last
-		answers[:max] = range.values.first
-		answers[:avg] = range.values.sum / range.values.count
+		answers[:min] = (range.values.last || 0)
+		answers[:max] = (range.values.first || 0)
+		if range.values.count != 0
+			answers[:avg] = range.values.sum / range.values.count  
+		else
+			answers[:avg] = 0
+		end
 		answers
 	end
 
@@ -77,10 +80,10 @@ class Condition < ActiveRecord::Base
 
 	def self.breakout_speed
 		counter = 0.0
-		speed = Hash.new
+		speed = Hash.new(0)
 		until counter == 16.0
 			speed.merge!(counter=>breakout_mph(counter))
-			count += 4.0
+			counter += 4.0
 		end
 		speed
 	end
@@ -94,9 +97,13 @@ class Condition < ActiveRecord::Base
 	def self.breakout_mph(speed_range)
 		range = wind_speed_trips(speed_range)
 		answers = Hash.new(0)
-		answers[:min] = range.values.last
-		answers[:max] = range.values.first
-		answers[:avg] = range.values.sum / range.values.count
+		answers[:min] = (range.values.last || 0)
+		answers[:max] = (range.values.first || 0)
+		if range.values.count != 0
+			answers[:avg] = range.values.sum / range.values.count  
+		else
+			answers[:avg] = 0
+		end
 		answers
 	end
 
@@ -105,7 +112,7 @@ class Condition < ActiveRecord::Base
 		speed = Hash.new
 		until counter == 10.0
 			speed.merge!(counter=>breakout_sight(counter))
-			count += 4.0
+			counter += 4.0
 		end
 		speed
 	end
@@ -115,13 +122,17 @@ class Condition < ActiveRecord::Base
 			.joins(:trips).where(mean_visibility: (range...(range + 4.0)))
 			.group(:conditions).order("count_id DESC").count(:id)
 	end
-
-	def self.breakout_sight(speed_range)
-		range = sight_dist_trips(speed_range)
+	
+	def self.breakout_sight(sight_range)
+		range = sight_dist_trips(sight_range)
 		answers = Hash.new(0)
-		answers[:min] = range.values.last
-		answers[:max] = range.values.first
-		answers[:avg] = range.values.sum / range.values.count
+		answers[:min] = (range.values.last || 0)
+		answers[:max] = (range.values.first || 0)
+		if range.values.count != 0
+			answers[:avg] = range.values.sum / range.values.count  
+		else
+			answers[:avg] = 0
+		end
 		answers
 	end
 
@@ -134,5 +145,5 @@ class Condition < ActiveRecord::Base
 		find( Trip.joins(:condition).group(:condition_id)
 			.order("count_id DESC").count(:id).keys.last)
 	end
-
+	
 end
