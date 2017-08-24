@@ -15,7 +15,7 @@ RSpec.describe "User can create a new condition" do
 		fill_in('precipitation',   with: "2.25"       )
 		fill_in('zip_code',        with: "95113"      )
 
-		click_on('create new condition')
+		click_on('Create new condition')
 
 		expect(Condition.count).to eq(1)
 

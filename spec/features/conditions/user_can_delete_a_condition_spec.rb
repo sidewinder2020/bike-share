@@ -6,7 +6,7 @@ RSpec.describe "While visiting condition show page" do
 		visit "/conditions"
 
 		expect(Condition.count).to eq(1)
-		click_on('delete')
+		click_on('Delete')
 		expect(Condition.count).to eq(0)
 
 	end

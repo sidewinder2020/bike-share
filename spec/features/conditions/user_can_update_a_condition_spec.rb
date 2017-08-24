@@ -15,7 +15,7 @@ RSpec.describe "While visiting condition show page" do
 		fill_in('condition[precipitation]',   with: 2.25       )
 		fill_in('condition[zip_code]',        with: 80113      )
 
-		click_on('edit the condition')
+		click_on('Submit')
 
 		condition = Condition.all.first
 		expect(current_path).to eq("/condition/1")
