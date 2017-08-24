@@ -5,12 +5,12 @@ RSpec.describe "User can create a new station" do
 
 
 		fill_in('name',              with: 'Mushroom' )
-		fill_in('city',              with: 'Englewood')
+		fill_in('city',      				with: 'Englewood')
 		fill_in('installation_date', with: '2012/1/1' )
 		fill_in('dock_count',        with: "20"       )
 
 
-		click_on('create new station')
+		click_on('Create this Station')
 		station = Station.all.first
 
 		expect(current_path).to eq("/stations")
