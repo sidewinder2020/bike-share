@@ -26,7 +26,7 @@ class Condition < ActiveRecord::Base
 		answers[:min] = (range.values.last || 0)
 		answers[:max] = (range.values.first || 0)
 		if range.values.count != 0
-			answers[:avg] = range.values.sum / range.values.count  
+			answers[:avg] = range.values.sum / range.values.count
 		else
 			answers[:avg] = 0
 		end
@@ -55,7 +55,7 @@ class Condition < ActiveRecord::Base
 		answers[:min] = (range.values.last || 0)
 		answers[:max] = (range.values.first || 0)
 		if range.values.count != 0
-			answers[:avg] = range.values.sum / range.values.count  
+			answers[:avg] = range.values.sum / range.values.count
 		else
 			answers[:avg] = 0
 		end
@@ -100,7 +100,7 @@ class Condition < ActiveRecord::Base
 		answers[:min] = (range.values.last || 0)
 		answers[:max] = (range.values.first || 0)
 		if range.values.count != 0
-			answers[:avg] = range.values.sum / range.values.count  
+			answers[:avg] = range.values.sum / range.values.count
 		else
 			answers[:avg] = 0
 		end
@@ -110,7 +110,7 @@ class Condition < ActiveRecord::Base
 	def self.breakout_view
 		counter = 0.0
 		speed = Hash.new
-		until counter == 10.0
+		until counter >= 10.0
 			speed.merge!(counter=>breakout_sight(counter))
 			counter += 4.0
 		end
@@ -122,14 +122,14 @@ class Condition < ActiveRecord::Base
 			.joins(:trips).where(mean_visibility: (range...(range + 4.0)))
 			.group(:conditions).order("count_id DESC").count(:id)
 	end
-	
+
 	def self.breakout_sight(sight_range)
 		range = sight_dist_trips(sight_range)
 		answers = Hash.new(0)
 		answers[:min] = (range.values.last || 0)
 		answers[:max] = (range.values.first || 0)
 		if range.values.count != 0
-			answers[:avg] = range.values.sum / range.values.count  
+			answers[:avg] = range.values.sum / range.values.count
 		else
 			answers[:avg] = 0
 		end
@@ -145,5 +145,5 @@ class Condition < ActiveRecord::Base
 		find( Trip.joins(:condition).group(:condition_id)
 			.order("count_id DESC").count(:id).keys.last)
 	end
-	
+
 end

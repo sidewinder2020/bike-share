@@ -69,24 +69,36 @@
         <h1 class="text-center">Weather Analytics</h1><br/>
 
         <h4 class="text-center">Breakout of (Avg/Highest/Lowest) # of Rides, Acc to Temp:</h4>
-        <h4 class="text-center"><small>Avg<br/>
-        Max<br/>
-        Min</small></h4><br/>
+        <h4 class="text-center"><small><% Condition.breakout_temps.each do |hash| %><br/>
+            <%= hash[0]  %> °F</br>
+            Minimum: <%= hash[1][:min] %><br/>
+            Maximum: <%= hash[1][:max] %><br/>
+            Average: <%= hash[1][:avg] %><br/>
+          <% end %></small></h4><br/>
 
         <h4 class="text-center">Breakout of (Avg/Highest/Lowest) number of rides, on days with precipitation (in 1/2 inch increments):</h4>
-        <h4 class="text-center"><small>Avg<br/>
-        Max<br/>
-        Min</small></h4><br/>
+        <h4 class="text-center"><small><% Condition.breakout_precip.each do |hash| %> <br/>
+            <%= hash[0]  %> inch(es)</br>
+            Minimum: <%= hash[1][:min] %><br/>
+            Maximum: <%= hash[1][:max] %><br/>
+            Average: <%= hash[1][:avg] %><br/>
+          <% end %></small></h4><br/>
 
         <h4 class="text-center">Breakout of (Avg/Highest/Lowest) number of rides on days, based on Wind Speed:</h4>
-        <h4 class="text-center"><small>Avg<br/>
-        Max<br/>
-        Min</small></h4><br/>
+        <h4 class="text-center"><small><% Condition.breakout_speed.each do |hash| %><br/>
+            <%= hash[0]  %> mph</br>
+            Minimum: <%= hash[1][:min] %><br/>
+            Maximum: <%= hash[1][:max] %><br/>
+            Average: <%= hash[1][:avg] %><br/>
+          <% end %></small></h4><br/>
 
         <h4 class="text-center">Breakout of (Avg/Highest/Lowest) number of rides on days, based on visibility:</h4>
-        <h4 class="text-center"><small>Avg<br/>
-        Max<br/>
-        Min</small></h4><br/>
+        <h4 class="text-center"><small><% Condition.breakout_view.each do |hash| %><br/>
+            <%= hash[0]  %> miles</br>
+            Minimum: <%= hash[1][:min] %><br/>
+            Maximum: <%= hash[1][:max] %><br/>
+            Average: <%= hash[1][:avg] %><br/>
+          <% end %></small></h4><br/>
 
         <h4 class="text-center">Weather on the day with the highest rides:</h4>
         <h4 class="text-center"><small><a href="/conditions/<% Condition.best_weather_trip_day.id %>"><% Condition.best_weather_trip_day.weather_date %></a></small></h4><br/>
