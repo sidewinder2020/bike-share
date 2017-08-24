@@ -80,11 +80,12 @@ class Condition < ActiveRecord::Base
 	
 	def self.breakout_speed
 		counter = 0.0
-		speed = Hash.new
+		speed = Hash.new(0)
 		until counter == 16.0
 			speed.merge!(counter=>breakout_mph(counter))
-			count += 4.0
+			counter += 4.0
 		end
+		speed
 	end
 	
 	def self.wind_speed_trips(range)
